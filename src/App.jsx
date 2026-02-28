@@ -44,11 +44,11 @@ const RESET_ACTIVITIES = [
 ];
 
 const MOOD_SCALE = [
-  { value: 1, label: "Drained", emoji: "😔", color: "#8B9DC3" },
-  { value: 2, label: "Low", emoji: "😐", color: "#A8B5C8" },
-  { value: 3, label: "Okay", emoji: "🙂", color: "#B8C9A3" },
-  { value: 4, label: "Good", emoji: "😊", color: "#A3C9A8" },
-  { value: 5, label: "Energized", emoji: "✨", color: "#8BC9A3" },
+  { value: 1, label: "Drained", emoji: "😔", color: "#6B8BA4" },
+  { value: 2, label: "Low", emoji: "😐", color: "#8BA4B4" },
+  { value: 3, label: "Okay", emoji: "🙂", color: "#D9C9B5" },
+  { value: 4, label: "Good", emoji: "😊", color: "#D4954A" },
+  { value: 5, label: "Energized", emoji: "✨", color: "#E8A838" },
 ];
 
 const MORNING_SCALE = [
@@ -279,9 +279,9 @@ function requestNotificationPermission() {
 const styles = {
   app: {
     minHeight: "100vh",
-    background: "linear-gradient(145deg, #F5F0EB 0%, #EDE7E0 30%, #E8E4DD 60%, #F0ECE5 100%)",
+    background: "linear-gradient(165deg, #F5E6D3 0%, #F0DCC8 40%, #EBD5BF 70%, #F2E4D6 100%)",
     fontFamily: "'Instrument Serif', 'Georgia', serif",
-    color: "#2C2825",
+    color: "#2C3A4A",
     position: "relative",
     overflow: "hidden",
   },
@@ -310,7 +310,7 @@ const styles = {
     flex: 1,
     height: 3,
     borderRadius: 2,
-    background: done ? "#8B7355" : active ? "#A89070" : "#D4CBC0",
+    background: done ? "#D4954A" : active ? "#E8A838" : "#D9C9B5",
     transition: "background 0.5s ease",
   }),
   onboardTitle: {
@@ -319,11 +319,12 @@ const styles = {
     fontWeight: 400,
     marginBottom: 8,
     letterSpacing: "-0.01em",
+    color: "#1E2A4A",
   },
   onboardSubtext: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 15,
-    color: "#7A7067",
+    color: "#5A6B7A",
     lineHeight: 1.6,
     marginBottom: 36,
     fontWeight: 400,
@@ -332,12 +333,12 @@ const styles = {
     fontFamily: "'Instrument Serif', Georgia, serif",
     fontSize: 24,
     border: "none",
-    borderBottom: "2px solid #C4B8A8",
+    borderBottom: "2px solid #D4954A",
     background: "transparent",
     padding: "12px 0",
     width: "100%",
     outline: "none",
-    color: "#2C2825",
+    color: "#1E2A4A",
     letterSpacing: "-0.01em",
   },
   // Multi-select chips
@@ -351,11 +352,11 @@ const styles = {
     fontSize: 14,
     padding: "14px 18px",
     borderRadius: 12,
-    border: selected ? "1.5px solid #8B7355" : "1.5px solid #D4CBC0",
-    background: selected ? "rgba(139, 115, 85, 0.08)" : "rgba(255,255,255,0.5)",
+    border: selected ? "1.5px solid #D4954A" : "1.5px solid #D9C9B5",
+    background: selected ? "rgba(212, 149, 74, 0.12)" : "rgba(255,255,255,0.6)",
     cursor: "pointer",
     transition: "all 0.25s ease",
-    color: selected ? "#5C4A32" : "#6B6058",
+    color: selected ? "#1E2A4A" : "#5A6B7A",
     fontWeight: selected ? 500 : 400,
     textAlign: "left",
     display: "flex",
@@ -368,8 +369,8 @@ const styles = {
     fontFamily: "'DM Sans', sans-serif",
     padding: "18px 20px",
     borderRadius: 14,
-    border: selected ? "1.5px solid #8B7355" : "1.5px solid #D4CBC0",
-    background: selected ? "rgba(139, 115, 85, 0.08)" : "rgba(255,255,255,0.5)",
+    border: selected ? "1.5px solid #D4954A" : "1.5px solid #D9C9B5",
+    background: selected ? "rgba(212, 149, 74, 0.12)" : "rgba(255,255,255,0.6)",
     cursor: "pointer",
     transition: "all 0.25s ease",
     textAlign: "left",
@@ -377,12 +378,12 @@ const styles = {
   freqLabel: (selected) => ({
     fontSize: 15,
     fontWeight: selected ? 600 : 500,
-    color: selected ? "#5C4A32" : "#4A4540",
+    color: selected ? "#1E2A4A" : "#3A4A5A",
     marginBottom: 2,
   }),
   freqDesc: {
     fontSize: 13,
-    color: "#9A8F84",
+    color: "#6B8BA4",
     fontWeight: 400,
   },
   // Buttons
@@ -393,8 +394,8 @@ const styles = {
     padding: "16px 32px",
     borderRadius: 50,
     border: "none",
-    background: disabled ? "#D4CBC0" : "#5C4A32",
-    color: disabled ? "#A89F95" : "#F5F0EB",
+    background: disabled ? "#D9C9B5" : "#1E2A4A",
+    color: disabled ? "#A0A8B0" : "#F5E6D3",
     cursor: disabled ? "default" : "pointer",
     transition: "all 0.3s ease",
     marginTop: 32,
@@ -404,7 +405,7 @@ const styles = {
   skipBtn: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 13,
-    color: "#A89F95",
+    color: "#6B8BA4",
     background: "none",
     border: "none",
     cursor: "pointer",
@@ -414,13 +415,13 @@ const styles = {
   },
   // File upload
   dropZone: (dragging) => ({
-    border: `2px dashed ${dragging ? "#8B7355" : "#C4B8A8"}`,
+    border: `2px dashed ${dragging ? "#D4954A" : "#D9C9B5"}`,
     borderRadius: 16,
     padding: "48px 24px",
     textAlign: "center",
     cursor: "pointer",
     transition: "all 0.3s ease",
-    background: dragging ? "rgba(139,115,85,0.06)" : "rgba(255,255,255,0.3)",
+    background: dragging ? "rgba(212,149,74,0.08)" : "rgba(255,255,255,0.4)",
   }),
   // Dashboard
   dashHeader: {
@@ -433,29 +434,30 @@ const styles = {
     lineHeight: 1.3,
     letterSpacing: "-0.01em",
     marginBottom: 4,
+    color: "#1E2A4A",
   },
   dateText: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 13,
-    color: "#9A8F84",
+    color: "#6B8BA4",
     fontWeight: 400,
     letterSpacing: "0.04em",
     textTransform: "uppercase",
   },
   card: {
-    background: "rgba(255,255,255,0.65)",
+    background: "rgba(255,255,255,0.7)",
     backdropFilter: "blur(20px)",
     borderRadius: 16,
     padding: "22px 22px",
     marginBottom: 14,
-    border: "1px solid rgba(212, 203, 192, 0.4)",
-    boxShadow: "0 2px 12px rgba(92,74,50,0.04)",
+    border: "1px solid rgba(212, 149, 74, 0.2)",
+    boxShadow: "0 4px 16px rgba(30,42,74,0.04)",
   },
   cardTitle: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 11,
     fontWeight: 600,
-    color: "#A89070",
+    color: "#D4954A",
     letterSpacing: "0.08em",
     textTransform: "uppercase",
     marginBottom: 12,
@@ -464,7 +466,7 @@ const styles = {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14.5,
     lineHeight: 1.6,
-    color: "#4A4540",
+    color: "#3A4A5A",
     fontWeight: 400,
   },
   // Mood check-in
@@ -478,8 +480,8 @@ const styles = {
     width: 56,
     height: 56,
     borderRadius: 14,
-    border: selected ? "2px solid #8B7355" : "1.5px solid #D4CBC0",
-    background: selected ? "rgba(139,115,85,0.1)" : "rgba(255,255,255,0.5)",
+    border: selected ? "2px solid #D4954A" : "1.5px solid #D9C9B5",
+    background: selected ? "rgba(212,149,74,0.15)" : "rgba(255,255,255,0.6)",
     cursor: "pointer",
     display: "flex",
     flexDirection: "column",
@@ -491,7 +493,7 @@ const styles = {
   moodLabel: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 9,
-    color: "#8A7F74",
+    color: "#6B8BA4",
     marginTop: 2,
   },
   // Reset suggestion
@@ -500,7 +502,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
     padding: "14px 0",
-    borderBottom: "1px solid rgba(212,203,192,0.3)",
+    borderBottom: "1px solid rgba(212,149,74,0.15)",
   },
   resetBtnGroup: {
     display: "flex",
@@ -513,8 +515,8 @@ const styles = {
     padding: "8px 20px",
     borderRadius: 50,
     border: "none",
-    background: "#5C4A32",
-    color: "#F5F0EB",
+    background: "#1E2A4A",
+    color: "#F5E6D3",
     cursor: "pointer",
   },
   resetNo: {
@@ -523,9 +525,9 @@ const styles = {
     fontWeight: 500,
     padding: "8px 20px",
     borderRadius: 50,
-    border: "1.5px solid #C4B8A8",
+    border: "1.5px solid #D9C9B5",
     background: "transparent",
-    color: "#7A7067",
+    color: "#5A6B7A",
     cursor: "pointer",
   },
   // Nudge overlay
@@ -535,7 +537,7 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    background: "rgba(44,40,37,0.4)",
+    background: "rgba(30,42,74,0.5)",
     backdropFilter: "blur(8px)",
     display: "flex",
     alignItems: "center",
@@ -544,19 +546,19 @@ const styles = {
     animation: "fadeIn 0.3s ease",
   },
   nudgeCard: {
-    background: "#F5F0EB",
+    background: "#F5E6D3",
     borderRadius: 20,
     padding: "36px 28px",
     maxWidth: 380,
     width: "90%",
     textAlign: "center",
-    boxShadow: "0 20px 60px rgba(44,40,37,0.15)",
+    boxShadow: "0 20px 60px rgba(30,42,74,0.2)",
   },
   nudgeText: {
     fontFamily: "'Instrument Serif', Georgia, serif",
     fontSize: 20,
     lineHeight: 1.5,
-    color: "#2C2825",
+    color: "#1E2A4A",
     marginBottom: 28,
     fontWeight: 400,
   },
@@ -567,8 +569,8 @@ const styles = {
     padding: "12px 32px",
     borderRadius: 50,
     border: "none",
-    background: "#5C4A32",
-    color: "#F5F0EB",
+    background: "#D4954A",
+    color: "#1E2A4A",
     cursor: "pointer",
   },
   // Timeline
@@ -583,21 +585,21 @@ const styles = {
     width: 10,
     height: 10,
     borderRadius: "50%",
-    background: isNext ? "#8B7355" : "#C4B8A8",
+    background: isNext ? "#D4954A" : "#D9C9B5",
     marginTop: 5,
     flexShrink: 0,
-    boxShadow: isNext ? "0 0 0 4px rgba(139,115,85,0.15)" : "none",
+    boxShadow: isNext ? "0 0 0 4px rgba(212,149,74,0.2)" : "none",
   }),
   timelineTime: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 12,
-    color: "#9A8F84",
+    color: "#6B8BA4",
     fontWeight: 500,
   },
   timelineName: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
-    color: "#4A4540",
+    color: "#3A4A5A",
     fontWeight: 500,
     marginTop: 2,
   },
@@ -607,9 +609,9 @@ const styles = {
     bottom: 0,
     left: 0,
     right: 0,
-    background: "rgba(245,240,235,0.9)",
+    background: "rgba(245,230,211,0.95)",
     backdropFilter: "blur(20px)",
-    borderTop: "1px solid rgba(212,203,192,0.4)",
+    borderTop: "1px solid rgba(212,149,74,0.2)",
     display: "flex",
     justifyContent: "center",
     gap: 48,
@@ -620,7 +622,7 @@ const styles = {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 11,
     fontWeight: active ? 600 : 400,
-    color: active ? "#5C4A32" : "#A89F95",
+    color: active ? "#1E2A4A" : "#6B8BA4",
     background: "none",
     border: "none",
     cursor: "pointer",
@@ -634,13 +636,13 @@ const styles = {
   apiInput: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
-    border: "1.5px solid #C4B8A8",
+    border: "1.5px solid #D9C9B5",
     borderRadius: 10,
-    background: "rgba(255,255,255,0.5)",
+    background: "rgba(255,255,255,0.6)",
     padding: "12px 16px",
     width: "100%",
     outline: "none",
-    color: "#4A4540",
+    color: "#3A4A5A",
     marginTop: 8,
     boxSizing: "border-box",
   },
@@ -648,41 +650,41 @@ const styles = {
   keywordInput: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
-    border: "1.5px solid #C4B8A8",
+    border: "1.5px solid #D9C9B5",
     borderRadius: 10,
-    background: "rgba(255,255,255,0.5)",
+    background: "rgba(255,255,255,0.6)",
     padding: "12px 16px",
     width: "100%",
     outline: "none",
-    color: "#4A4540",
+    color: "#3A4A5A",
     marginTop: 12,
     boxSizing: "border-box",
   },
   customInput: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
-    border: "1.5px solid #C4B8A8",
+    border: "1.5px solid #D9C9B5",
     borderRadius: 10,
-    background: "rgba(255,255,255,0.5)",
+    background: "rgba(255,255,255,0.6)",
     padding: "12px 16px",
     width: "100%",
     outline: "none",
-    color: "#4A4540",
+    color: "#3A4A5A",
     marginTop: 12,
     boxSizing: "border-box",
   },
   // Insight card
   insightCard: {
-    background: "linear-gradient(135deg, rgba(139,115,85,0.08) 0%, rgba(168,144,112,0.06) 100%)",
+    background: "linear-gradient(135deg, rgba(30,42,74,0.06) 0%, rgba(107,139,164,0.08) 100%)",
     borderRadius: 16,
     padding: "22px 22px",
     marginBottom: 14,
-    border: "1px solid rgba(139,115,85,0.15)",
+    border: "1px solid rgba(30,42,74,0.1)",
   },
   loadingDots: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
-    color: "#A89F95",
+    color: "#6B8BA4",
     fontStyle: "italic",
   },
 };
@@ -1151,7 +1153,7 @@ export default function GroundedApp() {
               href="https://platform.openai.com/api-keys"
               target="_blank"
               rel="noreferrer"
-              style={{ color: "#8B7355", textDecoration: "underline" }}
+              style={{ color: "#D4954A", textDecoration: "underline" }}
             >
               Get your API key here
             </a>
@@ -1181,7 +1183,7 @@ export default function GroundedApp() {
                 onClick={() => fileInputRef.current?.click()}
               >
                 <div style={{ fontSize: 40, marginBottom: 12 }}>📅</div>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#6B6058", margin: 0 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#5A6B7A", margin: 0 }}>
                   Drop your calendar file here
                 </p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#A89F95", marginTop: 6 }}>
@@ -1200,12 +1202,12 @@ export default function GroundedApp() {
                 <summary style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 13,
-                  color: "#8B7355",
+                  color: "#D4954A",
                   cursor: "pointer",
                 }}>
                   How do I export my calendar?
                 </summary>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#7A7067", lineHeight: 1.8, marginTop: 10 }}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#5A6B7A", lineHeight: 1.8, marginTop: 10 }}>
                   <strong>Google Calendar:</strong> Settings → Import & Export → Export → Download .ics<br />
                   <strong>Apple Calendar:</strong> File → Export → Export as .ics<br />
                   <strong>Outlook:</strong> File → Save Calendar → Save as .ics
@@ -1215,7 +1217,7 @@ export default function GroundedApp() {
           ) : (
             <div style={styles.card}>
               <div style={{ fontSize: 20, marginBottom: 12 }}>✨</div>
-              <p style={{ ...styles.cardText, fontWeight: 500, color: "#5C4A32" }}>
+              <p style={{ ...styles.cardText, fontWeight: 500, color: "#1E2A4A" }}>
                 Looks like you have {todayEvents.length} meeting{todayEvents.length !== 1 ? "s" : ""} today
               </p>
               {todayEvents.length > 0 && (
@@ -1549,7 +1551,7 @@ export default function GroundedApp() {
                       <span style={{
                         fontFamily: "'DM Sans', sans-serif",
                         fontSize: 13,
-                        color: "#8B7355",
+                        color: "#D4954A",
                         fontWeight: 500,
                       }}>
                         ✓ Scheduled
@@ -1581,9 +1583,9 @@ export default function GroundedApp() {
             ...styles.card,
             marginTop: 20,
             background: "rgba(139,115,85,0.06)",
-            border: "1.5px dashed #A89070",
+            border: "1.5px dashed #6B8BA4",
           }}>
-            <div style={{ ...styles.cardTitle, color: "#8B7355", marginBottom: 16 }}>
+            <div style={{ ...styles.cardTitle, color: "#D4954A", marginBottom: 16 }}>
               🧪 Test Panel (for development)
             </div>
 
@@ -1603,7 +1605,7 @@ export default function GroundedApp() {
             </div>
 
             {scheduledInfo.length === 0 && todayEvents.length > 0 && (
-              <div style={{ ...styles.cardText, fontSize: 12, color: "#A89070", fontStyle: "italic", marginBottom: 12 }}>
+              <div style={{ ...styles.cardText, fontSize: 12, color: "#6B8BA4", fontStyle: "italic", marginBottom: 12 }}>
                 All meetings may have already passed, or nudges were already triggered. Use the instant trigger buttons below to test.
               </div>
             )}
@@ -1622,7 +1624,7 @@ export default function GroundedApp() {
                 }}>
                   <span>
                     {s.type === "pre" ? "📣 Pre" : "💭 Post"}: {s.meeting}{" "}
-                    <span style={{ color: "#A89070" }}>
+                    <span style={{ color: "#6B8BA4" }}>
                       ({s.imminent ? "imminent" : `in ${minsUntil} min`} — {formatTime(s.triggerAt)})
                     </span>
                   </span>
@@ -1694,13 +1696,13 @@ export default function GroundedApp() {
         {postMeetingPending && (
           <div style={styles.nudgeOverlay}>
             <div style={styles.nudgeCard}>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#9A8F84", marginBottom: 8 }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#6B8BA4", marginBottom: 8 }}>
                 Just finished
               </p>
               <p style={{ ...styles.nudgeText, fontSize: 17, marginBottom: 20 }}>
                 {postMeetingPending.title || "Your meeting"}
               </p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#4A4540", marginBottom: 16 }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#3A4A5A", marginBottom: 16 }}>
                 How was that?
               </p>
               <div style={styles.moodRow}>
@@ -1723,7 +1725,7 @@ export default function GroundedApp() {
         {activeNudge && (
           <div style={styles.nudgeOverlay}>
             <div style={styles.nudgeCard}>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#A89070", marginBottom: 12, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#6B8BA4", marginBottom: 12, letterSpacing: "0.05em", textTransform: "uppercase" }}>
                 Coming up
               </p>
               <p style={styles.nudgeText}>{activeNudge.text}</p>
@@ -1762,7 +1764,7 @@ export default function GroundedApp() {
             <p style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
               fontSize: 16,
-              color: "#F5F0EB",
+              color: "#F5E6D3",
               margin: 0,
               marginBottom: 4,
             }}>
@@ -1833,10 +1835,10 @@ export default function GroundedApp() {
             {/* Insight */}
             {eodInsight && (
               <div style={styles.insightCard}>
-                <div style={{ ...styles.cardTitle, color: "#8B7355" }}>
+                <div style={{ ...styles.cardTitle, color: "#D4954A" }}>
                   Something you might not have noticed
                 </div>
-                <p style={{ ...styles.cardText, color: "#5C4A32", fontStyle: "italic" }}>
+                <p style={{ ...styles.cardText, color: "#1E2A4A", fontStyle: "italic" }}>
                   {eodInsight}
                 </p>
               </div>
@@ -1863,7 +1865,7 @@ export default function GroundedApp() {
                           width: "100%",
                           maxWidth: 40,
                           height: `${(m.value / 5) * 60}px`,
-                          background: `linear-gradient(to top, ${MOOD_SCALE.find((s) => s.value === m.value)?.color || "#C4B8A8"}, rgba(245,240,235,0.3))`,
+                          background: `linear-gradient(to top, ${MOOD_SCALE.find((s) => s.value === m.value)?.color || "#D9C9B5"}, rgba(245,230,211,0.3))`,
                           borderRadius: 6,
                           transition: "height 0.5s ease",
                         }}
@@ -1947,7 +1949,7 @@ export default function GroundedApp() {
             top: 16,
             left: 16,
             right: 16,
-            background: "#5C4A32",
+            background: "#1E2A4A",
             borderRadius: 14,
             padding: "16px 20px",
             zIndex: 300,
@@ -1968,7 +1970,7 @@ export default function GroundedApp() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 13,
               fontWeight: 600,
-              color: "#F5F0EB",
+              color: "#F5E6D3",
               letterSpacing: "0.02em",
             }}>
               {toast.title}
