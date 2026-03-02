@@ -1,0 +1,13 @@
+# Environment — NEVER commit
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log

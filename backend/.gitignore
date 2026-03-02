@@ -1,0 +1,15 @@
+# Environment — NEVER commit
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+
+# SQLite database — contains real user data
+db/*.db
+db/*.db-shm
+db/*.db-wal
+
+# Logs
+*.log
