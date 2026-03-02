@@ -1,10 +1,13 @@
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require('fs');
 
-// On Render, use the persistent disk at /data. Locally, use the db/ folder.
-const DB_PATH = process.env.NODE_ENV === 'production'
-  ? '/data/levio.db'
-  : path.join(__dirname, 'levio.db');
+// DB_PATH env var lets Render (or any host) override the location.
+// Default: db/levio.db next to this file.
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'levio.db');
+
+// Make sure the directory exists (important when using a mounted disk on Render)
+fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 
 let db;
 
