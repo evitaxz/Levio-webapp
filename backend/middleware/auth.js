@@ -11,6 +11,10 @@ function requireAuth(req, res, next) {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
+    // Verify the user still exists in the DB (catches stale tokens after DB resets)
+    const { getDb } = require('../db/setup');
+    const user = getDb().prepare('SELECT id FROM users WHERE id = ?').get(payload.userId);
+    if (!user) return res.status(401).json({ error: 'Session expired. Please log in again.' });
     req.userId = payload.userId;
     next();
   } catch (err) {
