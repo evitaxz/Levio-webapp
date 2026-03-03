@@ -8,9 +8,11 @@ export default function Welcome() {
   const navigate = useNavigate()
   const user     = getUser()
 
+  // Returning users who finished onboarding skip straight to their day
   useEffect(() => {
-    if (!isLoggedIn()) { navigate('/onboarding', { replace: true }); return }
-    if (user?.hasCompletedOnboarding) { navigate('/morning', { replace: true }) }
+    if (isLoggedIn() && user?.hasCompletedOnboarding) {
+      navigate('/morning', { replace: true })
+    }
   }, [])
 
   return (
@@ -24,7 +26,6 @@ export default function Welcome() {
         textAlign: 'center',
         position: 'relative',
         zIndex: 1,
-        gap: 0,
       }}>
 
         {/* ✦ + App name */}
@@ -60,8 +61,7 @@ export default function Welcome() {
           marginBottom: 24,
           fontStyle: 'italic',
           fontWeight: 400,
-          animation: 'fadeIn 0.7s 0.2s ease both',
-          opacity: 0,
+          animation: 'slideUp 0.7s 0.2s ease both',
         }}>
           From AM to PM, Levio goes to work with you.
         </p>
@@ -75,14 +75,13 @@ export default function Welcome() {
           maxWidth: 400,
           margin: '0 auto 52px',
           fontWeight: 400,
-          animation: 'fadeIn 0.7s 0.35s ease both',
-          opacity: 0,
+          animation: 'slideUp 0.7s 0.35s ease both',
         }}>
           Integrated with your calendar, Levio powers you with personalized energy check-ins throughout your workday — before meetings, after meetings, and in the moments between.
         </p>
 
         {/* CTA */}
-        <div style={{ animation: 'fadeIn 0.7s 0.5s ease both', opacity: 0 }}>
+        <div style={{ animation: 'slideUp 0.7s 0.5s ease both' }}>
           <button
             onClick={() => navigate('/onboarding')}
             style={btn.primary(false)}

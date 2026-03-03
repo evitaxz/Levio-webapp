@@ -17,13 +17,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Onboarding is the entry point — no auth required, handles login itself */}
-        <Route path="/onboarding" element={<Onboarding />} />
+        {/* Welcome is the public landing page — no auth required */}
+        <Route path="/"        element={<Welcome />} />
+        <Route path="/welcome" element={<Welcome />} />
 
-        {/* Welcome screen — shown after login, before onboarding steps */}
-        <Route path="/welcome" element={
-          <RequireAuth><Welcome /></RequireAuth>
-        } />
+        {/* Onboarding — no auth required, handles login itself on step 0 */}
+        <Route path="/onboarding" element={<Onboarding />} />
 
         <Route path="/morning" element={
           <RequireAuth><MorningCheckin /></RequireAuth>
@@ -37,8 +36,8 @@ export default function App() {
           <RequireAuth><EndOfDay /></RequireAuth>
         } />
 
-        {/* Everything else → onboarding */}
-        <Route path="*" element={<Navigate to="/onboarding" replace />} />
+        {/* Everything else → welcome */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   )
