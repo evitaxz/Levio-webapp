@@ -2,18 +2,21 @@
 // All pages import from here to stay visually consistent
 
 export const colors = {
-  bg:         '#F5F0EB',
-  bgGradient: 'linear-gradient(145deg, #F5F0EB 0%, #EDE7E0 30%, #E8E4DD 60%, #F0ECE5 100%)',
-  text:       '#2C2825',
-  textSub:    '#7A7067',
-  textMuted:  '#9A8F84',
-  brown:      '#5C4A32',
-  brownMid:   '#8B7355',
-  brownLight: '#A89070',
-  border:     '#D4CBC0',
-  borderSoft: 'rgba(212, 203, 192, 0.4)',
-  cardBg:     'rgba(255, 255, 255, 0.65)',
-  white50:    'rgba(255, 255, 255, 0.5)',
+  bg:         '#F4D9A8',
+  bgGradient: 'linear-gradient(160deg, #F8E8C2 0%, #F3D49C 30%, #EEDBA8 65%, #F6E3BF 100%)',
+  text:       '#1C2040',   // deep navy — from the night sky + hand-lettered text
+  textSub:    '#6B5C48',   // warm mid tone
+  textMuted:  '#9A8A78',   // muted warm
+  brown:      '#C4780A',   // golden amber — from sunflowers and the sun
+  brownMid:   '#D4920E',   // mid gold
+  brownLight: '#E0A830',   // light gold
+  border:     '#DCC080',   // warm golden border
+  borderSoft: 'rgba(196, 120, 10, 0.15)',
+  cardBg:     'rgba(255, 251, 238, 0.75)',
+  white50:    'rgba(255, 251, 238, 0.52)',
+  navy:       '#1E2D50',   // deep night sky
+  teal:       '#5A7D8A',   // ocean / water
+  cream:      '#F0E0C0',   // the winding path
 }
 
 export const fonts = {
@@ -120,9 +123,9 @@ export const card = {
     boxShadow: '0 2px 12px rgba(92,74,50,0.04)',
   },
   insight: {
-    background: 'linear-gradient(135deg, rgba(139,115,85,0.08) 0%, rgba(168,144,112,0.06) 100%)',
+    background: 'linear-gradient(135deg, rgba(196,120,10,0.08) 0%, rgba(90,125,138,0.06) 100%)',
     borderRadius: 16, padding: '22px 22px', marginBottom: 14,
-    border: '1px solid rgba(139,115,85,0.15)',
+    border: '1px solid rgba(196,120,10,0.18)',
   },
   label: {
     fontFamily: fonts.sans, fontSize: 11, fontWeight: 600,
@@ -166,7 +169,7 @@ export const timeline = {
 export const nav = {
   bar: {
     position: 'fixed', bottom: 0, left: 0, right: 0,
-    background: 'rgba(245,240,235,0.92)', backdropFilter: 'blur(20px)',
+    background: 'rgba(248,232,194,0.94)', backdropFilter: 'blur(20px)',
     borderTop: `1px solid ${colors.borderSoft}`,
     display: 'flex', justifyContent: 'center', gap: 48,
     padding: '14px 0 28px', zIndex: 50,
