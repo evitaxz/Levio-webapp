@@ -95,7 +95,7 @@ export default function Dashboard() {
   const dateStr = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 
   return (
-    <div style={{ ...appShell, position: 'relative', background: 'linear-gradient(165deg, #F8E8C0 0%, #F3D498 30%, #EEDBA0 65%, #F8E4BC 100%)' }}>
+    <div style={{ ...appShell, position: 'relative', background: 'linear-gradient(165deg, #FBF5EC 0%, #F8EDDA 35%, #F5E8D0 70%, #FAF2E0 100%)', color: '#1C2040' }}>
       <Sun />
       {/* Nudge overlay — triggered when user opens from push */}
       {nudgeEventId && <NudgeOverlay eventId={nudgeEventId} onDismiss={() => navigate('/dashboard', { replace: true })} />}
@@ -105,7 +105,7 @@ export default function Dashboard() {
 
         {/* Header */}
         <div style={{ paddingTop: 48, paddingBottom: 24 }}>
-          <p style={{ fontFamily: fonts.sans, fontSize: 12, color: colors.textMuted, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>
+          <p style={{ fontFamily: fonts.sans, fontSize: 12, color: '#8B7A6A', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>
             {dateStr}
           </p>
           <h1 style={{ fontFamily: fonts.serif, fontSize: 28, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.3 }}>
@@ -137,7 +137,7 @@ export default function Dashboard() {
             {/* AI Headline */}
             {morning?.headline && (
               <div style={{ marginBottom: 20, animation: 'slideUp 0.5s ease' }}>
-                <p style={{ fontFamily: fonts.serif, fontSize: 20, lineHeight: 1.5, color: colors.text, fontWeight: 400 }}>
+                <p style={{ fontFamily: fonts.serif, fontSize: 20, lineHeight: 1.5, color: '#1C2040', fontWeight: 400 }}>
                   {morning.headline}
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function Dashboard() {
             {activeTab === 'today' && (
               <div>
                 {events.length === 0 ? (
-                  <p style={{ fontFamily: fonts.sans, fontSize: 15, color: colors.textSub }}>No meetings today.</p>
+                  <p style={{ fontFamily: fonts.sans, fontSize: 15, color: '#6B5C4A' }}>No meetings today.</p>
                 ) : (
                   events.map(e => (
                     <div key={e.id} style={timeline.item(isEventPast(e.end_time))}>
@@ -193,7 +193,7 @@ export default function Dashboard() {
             {activeTab === 'resets' && (
               <div>
                 {resets.length === 0 ? (
-                  <p style={{ fontFamily: fonts.sans, fontSize: 15, color: colors.textSub }}>No gaps left today — you're in back-to-back mode.</p>
+                  <p style={{ fontFamily: fonts.sans, fontSize: 15, color: '#6B5C4A' }}>No gaps left today — you're in back-to-back mode.</p>
                 ) : (
                   resets.map((r, i) => (
                     <div key={i} style={{ ...card.base, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

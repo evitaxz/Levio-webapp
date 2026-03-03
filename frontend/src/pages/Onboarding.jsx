@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { login, savePreferences, uploadCalendar, getUser, isLoggedIn } from '../api.js'
 import { appShell, container, fonts, colors, onboarding, btn } from '../styles/theme.js'
 import StarField from '../components/StarField.jsx'
@@ -36,11 +36,14 @@ const RESET_ACTIVITIES = [
 
 export default function Onboarding() {
   const navigate  = useNavigate()
+  const [params]  = useSearchParams()
   const user      = getUser()
   const fileRef   = useRef(null)
 
   // If already logged in and onboarding is done, skip straight to morning
+  // (unless ?preview is present — lets you revisit onboarding any time)
   useEffect(() => {
+    if (params.get('preview') !== null) return
     if (isLoggedIn() && user?.hasCompletedOnboarding) {
       navigate('/morning', { replace: true })
     }

@@ -139,11 +139,11 @@ export const card = {
 
 // --- Energy scale ---
 export const ENERGY_SCALE = [
-  { value: 1, label: 'Running low',   emoji: '😔', color: '#8B9DC3' },
-  { value: 2, label: 'Low battery',   emoji: '🪫', color: '#A8B5C8' },
-  { value: 3, label: 'Steady',        emoji: '🙂', color: '#B8C9A3' },
-  { value: 4, label: 'Good energy',   emoji: '😊', color: '#A3C9A8' },
-  { value: 5, label: 'Fully charged', emoji: '✨', color: '#8BC9A3' },
+  { value: 1, label: 'Could use more energy',  emoji: '😴', color: '#8B9DC3' },
+  { value: 2, label: 'Need to recharge soon',  emoji: '🌿', color: '#A8B5C8' },
+  { value: 3, label: 'Steady',                 emoji: '🙂', color: '#B8C9A3' },
+  { value: 4, label: 'Good energy',            emoji: '😊', color: '#A3C9A8' },
+  { value: 5, label: 'Fully charged',          emoji: '✨', color: '#8BC9A3' },
 ]
 
 export const energyBtn = (sel) => ({
