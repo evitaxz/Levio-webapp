@@ -1,6 +1,6 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { savePreferences, uploadCalendar, getUser } from '../api.js'
+import { login, savePreferences, uploadCalendar, getUser, isLoggedIn } from '../api.js'
 import { appShell, container, fonts, colors, onboarding, btn } from '../styles/theme.js'
 import StarField from '../components/StarField.jsx'
 
@@ -39,7 +39,15 @@ export default function Onboarding() {
   const user      = getUser()
   const fileRef   = useRef(null)
 
+  // If already logged in and onboarding is done, skip straight to morning
+  useEffect(() => {
+    if (isLoggedIn() && user?.hasCompletedOnboarding) {
+      navigate('/morning', { replace: true })
+    }
+  }, [])
+
   const [step, setStep]               = useState(0)
+  const [email, setEmail]             = useState(user?.email || '')
   const [name, setName]               = useState(user?.name || '')
   const [energyAreas, setEnergyAreas] = useState([])
   const [frequency, setFrequency]     = useState('')
@@ -75,7 +83,10 @@ export default function Onboarding() {
     setSaving(true)
     setError('')
     try {
-      if (step === 0) await savePreferences({ name: name.trim() })
+      if (step === 0) {
+        await login(email.trim().toLowerCase())
+        await savePreferences({ name: name.trim() })
+      }
       if (step === 2) await savePreferences({ energy_areas: energyAreas })
       if (step === 3) await savePreferences({ frequency })
       if (step === 4) await savePreferences({ reset_activities: resets, custom_reset: customReset })
@@ -88,7 +99,7 @@ export default function Onboarding() {
   }
 
   function canAdvance() {
-    if (step === 0) return name.trim().length > 0
+    if (step === 0) return email.trim().length > 0 && name.trim().length > 0
     if (step === 1) return !!calendarData
     if (step === 2) return energyAreas.length > 0
     if (step === 3) return !!frequency
@@ -115,21 +126,27 @@ export default function Onboarding() {
           ))}
         </div>
 
-        {/* ---- Screen 0: Name ---- */}
+        {/* ---- Screen 0: Email + Name ---- */}
         {step === 0 && (
           <div style={{ animation: 'fadeIn 0.4s ease' }}>
             <h2 style={onboarding.title}>
               Hey, I'm your workday companion — here to look out for your energy. ✦
-              <br />What should I call you?
             </h2>
             <input
               autoFocus
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              style={onboarding.nameInput}
+            />
+            <input
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && canAdvance() && next()}
-              placeholder="Your name"
-              style={onboarding.nameInput}
+              placeholder="What should I call you?"
+              style={{ ...onboarding.nameInput, marginTop: 12 }}
             />
           </div>
         )}
