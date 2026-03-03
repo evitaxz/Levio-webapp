@@ -132,9 +132,10 @@ router.get('/today', (req, res) => {
 });
 
 function todayMidnight() {
-  const d = new Date();
-  d.setHours(0, 0, 0, 0);
-  return d;
+  const PST_OFFSET_MS = 8 * 60 * 60 * 1000;
+  const pstNow = new Date(new Date().getTime() - PST_OFFSET_MS);
+  pstNow.setUTCHours(0, 0, 0, 0);
+  return new Date(pstNow.getTime() + PST_OFFSET_MS);
 }
 
 module.exports = router;

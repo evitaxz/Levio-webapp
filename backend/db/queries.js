@@ -1,11 +1,18 @@
 const { getDb } = require('./setup');
 
 // --- Time helpers ---
+// The Render server runs in UTC, but users are typically in PST/PDT (UTC-8/UTC-7).
+// We use PST offset (UTC-8) so "today" aligns with the user's calendar day.
+// This covers meetings up to 4am UTC = 8pm PST, capturing all normal workday events.
+// DST note: PDT (UTC-7) shifts this by 1 hour — acceptable for a prototype.
+const PST_OFFSET_MS = 8 * 60 * 60 * 1000; // 8 hours in ms
 
 function todayMidnight() {
-  const d = new Date();
-  d.setHours(0, 0, 0, 0);
-  return d;
+  const now = new Date();
+  // Shift clock to PST, zero out the time, then shift back to get PST midnight in UTC
+  const pstNow = new Date(now.getTime() - PST_OFFSET_MS);
+  pstNow.setUTCHours(0, 0, 0, 0);
+  return new Date(pstNow.getTime() + PST_OFFSET_MS);
 }
 
 function todayEnd() {
@@ -13,7 +20,9 @@ function todayEnd() {
 }
 
 function todayKey() {
-  return new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+  // Return PST date string 'YYYY-MM-DD' for cache keys
+  const pstNow = new Date(new Date().getTime() - PST_OFFSET_MS);
+  return pstNow.toISOString().slice(0, 10);
 }
 
 // SQLite stores CURRENT_TIMESTAMP as "YYYY-MM-DD HH:MM:SS" (no T, no Z).

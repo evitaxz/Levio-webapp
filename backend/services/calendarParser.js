@@ -16,7 +16,7 @@ function parseCalendar(fileBuffer) {
 
   const now = new Date();
   const windowStart = startOfDay(now);
-  const windowEnd = new Date(windowStart.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const windowEnd = new Date(windowStart.getTime() + 60 * 24 * 60 * 60 * 1000); // 60 days
 
   const events = [];
 
