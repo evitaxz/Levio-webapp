@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getEndOfDayContent, submitCheckin } from '../api.js'
+import { getEndOfDayContent, submitCheckin, clearSession } from '../api.js'
 import { appShell, container, fonts, colors, card, btn, nav, ENERGY_SCALE, energyBtn, loadingDots } from '../styles/theme.js'
 import Moon      from '../components/Moon.jsx'
 import StarField from '../components/StarField.jsx'
@@ -127,6 +127,9 @@ export default function EndOfDay() {
         </button>
         <button style={nav.item(true)} onClick={() => navigate('/endofday')}>
           <span style={{ fontSize: 18 }}>✦</span>Reflect
+        </button>
+        <button style={nav.item(false)} onClick={() => { clearSession(); navigate('/onboarding') }}>
+          <span style={{ fontSize: 18 }}>◦</span>Sign out
         </button>
       </nav>
     </div>

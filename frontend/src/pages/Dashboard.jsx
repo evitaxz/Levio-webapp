@@ -95,7 +95,7 @@ export default function Dashboard() {
   const dateStr = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 
   return (
-    <div style={{ ...appShell, position: 'relative' }}>
+    <div style={{ ...appShell, position: 'relative', background: 'linear-gradient(165deg, #F8E8C0 0%, #F3D498 30%, #EEDBA0 65%, #F8E4BC 100%)' }}>
       <Sun />
       {/* Nudge overlay — triggered when user opens from push */}
       {nudgeEventId && <NudgeOverlay eventId={nudgeEventId} onDismiss={() => navigate('/dashboard', { replace: true })} />}

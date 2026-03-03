@@ -124,9 +124,10 @@ export const card = {
     boxShadow: '0 2px 12px rgba(92,74,50,0.04)',
   },
   insight: {
-    background: 'linear-gradient(135deg, rgba(196,120,10,0.08) 0%, rgba(90,125,138,0.06) 100%)',
+    background: 'linear-gradient(135deg, rgba(255,248,218,0.97) 0%, rgba(255,242,195,0.97) 100%)',
     borderRadius: 16, padding: '22px 22px', marginBottom: 14,
-    border: '1px solid rgba(196,120,10,0.18)',
+    border: '2px solid rgba(232,160,32,0.50)',
+    boxShadow: '0 0 20px rgba(232,160,32,0.12)',
   },
   label: {
     fontFamily: fonts.sans, fontSize: 11, fontWeight: 600,
