@@ -17,8 +17,8 @@ export const colors = {
 }
 
 export const fonts = {
-  serif: "'Instrument Serif', Georgia, serif",
-  sans:  "'DM Sans', sans-serif",
+  serif: "'Playfair Display', Georgia, serif",
+  sans:  "'Nunito', sans-serif",
 }
 
 export const appShell = {
@@ -31,9 +31,9 @@ export const appShell = {
 }
 
 export const container = {
-  maxWidth: 480,
+  maxWidth: 'min(700px, 100%)',
   margin: '0 auto',
-  padding: '0 24px',
+  padding: '0 clamp(20px, 5vw, 64px)',
   minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
@@ -48,14 +48,14 @@ export const onboarding = {
     background: done ? colors.brown : active ? colors.brownMid : colors.border,
     transition: 'background 0.5s ease',
   }),
-  title: { fontSize: 28, lineHeight: 1.3, fontWeight: 400, marginBottom: 8, letterSpacing: '-0.01em' },
-  subtext: { fontFamily: fonts.sans, fontSize: 15, color: colors.textSub, lineHeight: 1.6, marginBottom: 36, fontWeight: 400 },
+  title: { fontSize: 'clamp(24px, 3.5vw, 32px)', lineHeight: 1.3, fontWeight: 400, marginBottom: 8, letterSpacing: '-0.01em' },
+  subtext: { fontFamily: fonts.sans, fontSize: 'clamp(14px, 1.8vw, 16px)', color: colors.textSub, lineHeight: 1.6, marginBottom: 36, fontWeight: 400 },
   nameInput: {
-    fontFamily: fonts.serif, fontSize: 24, border: 'none',
+    fontFamily: fonts.serif, fontSize: 'clamp(20px, 2.5vw, 26px)', border: 'none',
     borderBottom: `2px solid ${colors.border}`, background: 'transparent',
     padding: '12px 0', width: '100%', outline: 'none', color: colors.text, letterSpacing: '-0.01em',
   },
-  chipGrid: { display: 'flex', flexDirection: 'column', gap: 10 },
+  chipGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 },
   chip: (sel) => ({
     fontFamily: fonts.sans, fontSize: 14, padding: '14px 18px', borderRadius: 12,
     border: sel ? `1.5px solid ${colors.brownMid}` : `1.5px solid ${colors.border}`,
@@ -129,7 +129,7 @@ export const card = {
     color: colors.brownLight, letterSpacing: '0.08em',
     textTransform: 'uppercase', marginBottom: 12,
   },
-  text: { fontFamily: fonts.sans, fontSize: 14.5, lineHeight: 1.6, color: '#4A4540', fontWeight: 400 },
+  text: { fontFamily: fonts.sans, fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: '#4A4540', fontWeight: 400 },
 }
 
 // --- Energy scale ---
