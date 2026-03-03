@@ -187,4 +187,27 @@ async function handleEndOfDay(job) {
   logMoment(job.userId, null, 'endofday', hookText);
 }
 
-module.exports = { scheduleNudgesForUser, cancelJobsForUser };
+/**
+ * On server startup, re-schedule today's nudges for every user who has
+ * a calendar uploaded. This ensures jobs survive server restarts.
+ */
+function rescheduleAllUsers() {
+  const db = getDb();
+  const users = db.prepare('SELECT DISTINCT user_id FROM calendar_events').all();
+  if (!users.length) return;
+
+  console.log(`[scheduler] Rescheduling nudges for ${users.length} user(s) on startup…`);
+
+  for (const { user_id } of users) {
+    try {
+      const { prefs, todayEvents } = getUserContext(user_id);
+      if (todayEvents.length) {
+        scheduleNudgesForUser(user_id, todayEvents, prefs);
+      }
+    } catch (err) {
+      console.error(`[scheduler] Could not reschedule user ${user_id}:`, err.message);
+    }
+  }
+}
+
+module.exports = { scheduleNudgesForUser, cancelJobsForUser, rescheduleAllUsers };

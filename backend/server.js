@@ -60,6 +60,11 @@ app.use((err, req, res, next) => {
 
 // --- Start ---
 setupDatabase();
+
+// Re-schedule any pending nudges from the DB (survives server restarts)
+const { rescheduleAllUsers } = require('./services/scheduler');
+rescheduleAllUsers();
+
 app.listen(PORT, () => {
   console.log(`Levio backend running on http://localhost:${PORT}`);
   console.log(`Health check: http://localhost:${PORT}/health`);
