@@ -49,7 +49,8 @@ export default function Onboarding() {
     }
   }, [])
 
-  const [step, setStep]               = useState(0)
+  // Start at step 1 if already logged in (user came from /welcome → /onboarding)
+  const [step, setStep]               = useState(isLoggedIn() ? 1 : 0)
   const [email, setEmail]             = useState('')
   const [name, setName]               = useState(user?.name || '')
   const [energyAreas, setEnergyAreas] = useState([])
@@ -89,6 +90,8 @@ export default function Onboarding() {
       if (step === 0) {
         await login(email.trim().toLowerCase())
         await savePreferences({ name: name.trim() })
+        navigate('/welcome')
+        return
       }
       if (step === 2) await savePreferences({ energy_areas: energyAreas })
       if (step === 3) await savePreferences({ frequency })

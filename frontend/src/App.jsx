@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { isLoggedIn } from './api.js'
 
+import Welcome        from './pages/Welcome.jsx'
 import Onboarding     from './pages/Onboarding.jsx'
 import MorningCheckin from './pages/MorningCheckin.jsx'
 import Dashboard      from './pages/Dashboard.jsx'
@@ -19,6 +20,11 @@ export default function App() {
         {/* Onboarding is the entry point — no auth required, handles login itself */}
         <Route path="/onboarding" element={<Onboarding />} />
 
+        {/* Welcome screen — shown after login, before onboarding steps */}
+        <Route path="/welcome" element={
+          <RequireAuth><Welcome /></RequireAuth>
+        } />
+
         <Route path="/morning" element={
           <RequireAuth><MorningCheckin /></RequireAuth>
         } />
@@ -31,7 +37,7 @@ export default function App() {
           <RequireAuth><EndOfDay /></RequireAuth>
         } />
 
-        {/* /login and everything else → onboarding */}
+        {/* Everything else → onboarding */}
         <Route path="*" element={<Navigate to="/onboarding" replace />} />
       </Routes>
     </BrowserRouter>
