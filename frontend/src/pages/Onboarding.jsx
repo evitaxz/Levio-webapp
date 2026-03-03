@@ -135,22 +135,24 @@ export default function Onboarding() {
             <h2 style={onboarding.title}>
               Hey, I'm your workday companion — here to look out for your energy. ✦
             </h2>
-            <input
-              autoFocus
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              style={onboarding.nameInput}
-            />
-            <input
-              type="text"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && canAdvance() && next()}
-              placeholder="What should I call you?"
-              style={{ ...onboarding.nameInput, marginTop: 12 }}
-            />
+            <div style={onboarding.nameInputGrid}>
+              <input
+                autoFocus
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                style={onboarding.nameInput}
+              />
+              <input
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && canAdvance() && next()}
+                placeholder="What should I call you?"
+                style={onboarding.nameInput}
+              />
+            </div>
           </div>
         )}
 

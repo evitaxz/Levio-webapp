@@ -55,9 +55,16 @@ export const onboarding = {
   title: { fontSize: 'clamp(24px, 3.5vw, 32px)', lineHeight: 1.3, fontWeight: 400, marginBottom: 8, letterSpacing: '-0.01em' },
   subtext: { fontFamily: fonts.sans, fontSize: 'clamp(14px, 1.8vw, 16px)', color: colors.textSub, lineHeight: 1.6, marginBottom: 36, fontWeight: 400 },
   nameInput: {
-    fontFamily: fonts.serif, fontSize: 'clamp(20px, 2.5vw, 26px)', border: 'none',
-    borderBottom: `2px solid ${colors.border}`, background: 'transparent',
-    padding: '12px 0', width: '100%', outline: 'none', color: colors.text, letterSpacing: '-0.01em',
+    fontFamily: fonts.serif, fontSize: 'clamp(15px, 2vw, 18px)',
+    border: `1.5px solid ${colors.border}`,
+    borderRadius: 12,
+    background: colors.white50,
+    padding: '14px 18px', width: '100%', outline: 'none',
+    color: colors.text, letterSpacing: '-0.01em',
+    boxSizing: 'border-box', transition: 'border-color 0.25s ease, background 0.25s ease',
+  },
+  nameInputGrid: {
+    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 8,
   },
   chipGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 },
   chip: (sel) => ({
