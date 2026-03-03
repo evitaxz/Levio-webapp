@@ -19,25 +19,27 @@ export default function Welcome() {
       minHeight: '100vh',
       position: 'relative',
       overflowX: 'hidden',
-      // Dusk sky: warm golden top → nature greens → deep celestial blue bottom
-      background: 'linear-gradient(180deg, #FCC050 0%, #F09030 12%, #D86048 24%, #9A7058 36%, #4A7868 50%, #2E5880 64%, #1E3868 76%, #1B2857 88%, #121838 100%)',
+      // Dusk sky: warm linen → muted amber gold → dusty earth → teal water → warm indigo night
+      // Palette drawn directly from @iuliastration artwork: sandy cream backgrounds,
+      // muted golden suns, earthy paths, desaturated ocean, warm indigo night sky.
+      background: 'linear-gradient(180deg, #EDD9B4 0%, #C89840 18%, #A07858 34%, #4E7080 54%, #2A3C68 72%, #1C2848 86%, #1A2545 100%)',
       fontFamily: fonts.serif,
     }}>
 
       {/* Star field — cream particles appear against the dark lower sky */}
       <StarField />
 
-      {/* Sun — soft radial glow, top-right, solar gold */}
+      {/* Sun — muted amber glow, top-right. Uses app's brown (#E8A020) — same as sunflowers in artwork */}
       <div style={{
         position: 'absolute', top: -140, right: -100,
         width: 460, height: 460, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,200,80,0.30) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(232,160,32,0.22) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', top: -80, right: -50,
         width: 300, height: 300, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(240,168,48,0.70) 0%, rgba(240,140,32,0.35) 38%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(200,152,64,0.60) 0%, rgba(180,136,48,0.28) 42%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -46,8 +48,8 @@ export default function Welcome() {
         width="52" height="52" viewBox="0 0 52 52"
         style={{ position: 'absolute', bottom: 72, left: '7%', pointerEvents: 'none', opacity: 0.72, zIndex: 2 }}
       >
-        <circle cx="26" cy="26" r="22" fill="#C8D8E8" />
-        <circle cx="37" cy="19" r="19" fill="#1B2857" />
+        <circle cx="26" cy="26" r="22" fill="#C8D0DC" />
+        <circle cx="37" cy="19" r="19" fill="#1C2848" />
       </svg>
 
       {/* Levio wordmark — top-left, subtle header */}
