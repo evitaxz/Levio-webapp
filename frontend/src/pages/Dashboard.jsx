@@ -54,11 +54,17 @@ export default function Dashboard() {
     load()
   }, [])
 
-  // Ask about push notifications once after loading
+  // Push notification setup after content loads
   useEffect(() => {
     if (loading) return
     if (!('Notification' in window) || !('serviceWorker' in navigator)) return
-    if (Notification.permission === 'default') setPushPrompt(true)
+    if (Notification.permission === 'default') {
+      // First time — show the prompt banner
+      setPushPrompt(true)
+    } else if (Notification.permission === 'granted') {
+      // Already granted — silently re-subscribe to heal any missing DB subscription
+      enablePush()
+    }
   }, [loading])
 
   async function enablePush() {
