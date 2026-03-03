@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getEndOfDayContent, submitCheckin } from '../api.js'
 import { appShell, container, fonts, colors, card, btn, nav, ENERGY_SCALE, energyBtn, loadingDots } from '../styles/theme.js'
+import Moon      from '../components/Moon.jsx'
+import StarField from '../components/StarField.jsx'
 
 export default function EndOfDay() {
   const navigate = useNavigate()
@@ -39,7 +41,9 @@ export default function EndOfDay() {
   }
 
   return (
-    <div style={appShell}>
+    <div style={{ ...appShell, position: 'relative' }}>
+      <StarField />
+      <Moon />
       <div style={{ ...container, paddingBottom: 100, paddingTop: 48 }}>
 
         <p style={{ fontFamily: fonts.sans, fontSize: 12, color: colors.textMuted, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16 }}>

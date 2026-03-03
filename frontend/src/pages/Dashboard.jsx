@@ -9,6 +9,7 @@ import {
 } from '../styles/theme.js'
 import NudgeOverlay       from '../components/NudgeOverlay.jsx'
 import PostMeetingCheckin from '../components/PostMeetingCheckin.jsx'
+import Sun               from '../components/Sun.jsx'
 
 export default function Dashboard() {
   const navigate        = useNavigate()
@@ -94,7 +95,8 @@ export default function Dashboard() {
   const dateStr = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
 
   return (
-    <div style={appShell}>
+    <div style={{ ...appShell, position: 'relative' }}>
+      <Sun />
       {/* Nudge overlay — triggered when user opens from push */}
       {nudgeEventId && <NudgeOverlay eventId={nudgeEventId} onDismiss={() => navigate('/dashboard', { replace: true })} />}
       {checkinEventId && <PostMeetingCheckin eventId={checkinEventId} onDone={() => navigate('/dashboard', { replace: true })} />}

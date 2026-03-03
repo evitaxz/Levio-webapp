@@ -30,7 +30,7 @@ export default function StarField() {
       for (const s of stars) {
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(196,120,10,${s.opacity})`
+        ctx.fillStyle = `rgba(242,228,192,${s.opacity})`
         ctx.fill()
 
         s.y -= s.speed

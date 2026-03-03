@@ -2,21 +2,22 @@
 // All pages import from here to stay visually consistent
 
 export const colors = {
-  bg:         '#F4D9A8',
-  bgGradient: 'linear-gradient(160deg, #F8E8C2 0%, #F3D49C 30%, #EEDBA8 65%, #F6E3BF 100%)',
-  text:       '#1C2040',   // deep navy — from the night sky + hand-lettered text
-  textSub:    '#6B5C48',   // warm mid tone
-  textMuted:  '#9A8A78',   // muted warm
-  brown:      '#C4780A',   // golden amber — from sunflowers and the sun
-  brownMid:   '#D4920E',   // mid gold
-  brownLight: '#E0A830',   // light gold
-  border:     '#DCC080',   // warm golden border
-  borderSoft: 'rgba(196, 120, 10, 0.15)',
-  cardBg:     'rgba(255, 251, 238, 0.75)',
-  white50:    'rgba(255, 251, 238, 0.52)',
-  navy:       '#1E2D50',   // deep night sky
-  teal:       '#5A7D8A',   // ocean / water
-  cream:      '#F0E0C0',   // the winding path
+  bg:         '#1A2545',   // deep night sky navy
+  bgGradient: 'linear-gradient(180deg, #1C2848 0%, #1E2D58 45%, #16203F 80%, #1A2545 100%)',
+  text:       '#F2E4C0',   // warm cream — readable on navy
+  textSub:    '#C8AE88',   // muted golden cream
+  textMuted:  '#A09888',   // warm muted (readable on both navy + cards)
+  brown:      '#E8A020',   // golden amber — the sun, sunflowers
+  brownMid:   '#D49218',   // mid gold
+  brownLight: '#F0BC40',   // bright gold
+  border:     'rgba(232,160,32,0.30)',   // golden border
+  borderSoft: 'rgba(232,160,32,0.12)',
+  cardBg:     'rgba(255,248,218,0.94)',  // warm golden cream — opaque for readability
+  white50:    'rgba(255,248,218,0.50)',
+  navy:       '#1A2545',
+  navyLight:  '#243060',   // slightly lighter navy for layering
+  teal:       '#4A7080',   // ocean teal
+  cream:      '#F2E4C0',   // warm path cream
 }
 
 export const fonts = {
@@ -90,15 +91,15 @@ export const onboarding = {
 // --- Buttons ---
 export const btn = {
   primary: (disabled) => ({
-    fontFamily: fonts.sans, fontSize: 15, fontWeight: 500,
+    fontFamily: fonts.sans, fontSize: 15, fontWeight: 700,
     padding: '16px 32px', borderRadius: 50, border: 'none',
-    background: disabled ? colors.border : colors.brown,
-    color: disabled ? '#A89F95' : colors.bg,
+    background: disabled ? 'rgba(232,160,32,0.25)' : colors.brown,
+    color: disabled ? 'rgba(242,228,192,0.35)' : colors.navy,
     cursor: disabled ? 'default' : 'pointer', transition: 'all 0.3s ease',
-    letterSpacing: '0.02em',
+    letterSpacing: '0.04em',
   }),
   ghost: {
-    fontFamily: fonts.sans, fontSize: 13, color: colors.textMuted,
+    fontFamily: fonts.sans, fontSize: 13, color: colors.textSub,
     background: 'none', border: 'none', cursor: 'pointer', padding: 0, letterSpacing: '0.02em',
   },
   pill: {
@@ -169,14 +170,14 @@ export const timeline = {
 export const nav = {
   bar: {
     position: 'fixed', bottom: 0, left: 0, right: 0,
-    background: 'rgba(248,232,194,0.94)', backdropFilter: 'blur(20px)',
-    borderTop: `1px solid ${colors.borderSoft}`,
+    background: 'rgba(26,37,69,0.97)', backdropFilter: 'blur(20px)',
+    borderTop: '1px solid rgba(232,160,32,0.15)',
     display: 'flex', justifyContent: 'center', gap: 48,
     padding: '14px 0 28px', zIndex: 50,
   },
   item: (active) => ({
     fontFamily: fonts.sans, fontSize: 11, fontWeight: active ? 600 : 400,
-    color: active ? colors.brown : '#A89F95',
+    color: active ? colors.brown : 'rgba(242,228,192,0.45)',
     background: 'none', border: 'none', cursor: 'pointer',
     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, letterSpacing: '0.03em',
   }),
@@ -190,11 +191,11 @@ export const nudge = {
     justifyContent: 'center', zIndex: 100, animation: 'fadeIn 0.3s ease',
   },
   card: {
-    background: colors.bg, borderRadius: 20, padding: '36px 28px',
+    background: 'rgba(255,248,218,0.97)', borderRadius: 20, padding: '36px 28px',
     maxWidth: 380, width: '90%', textAlign: 'center',
-    boxShadow: '0 20px 60px rgba(44,40,37,0.15)',
+    boxShadow: '0 20px 60px rgba(26,37,69,0.5)',
   },
-  text: { fontFamily: fonts.serif, fontSize: 20, lineHeight: 1.5, color: colors.text, marginBottom: 28, fontWeight: 400 },
+  text: { fontFamily: fonts.serif, fontSize: 20, lineHeight: 1.5, color: colors.navy, marginBottom: 28, fontWeight: 400 },
 }
 
 // --- Loading ---
