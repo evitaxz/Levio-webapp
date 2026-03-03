@@ -71,11 +71,11 @@ export default function MorningCheckin() {
         </div>
 
         {/* Energy scale */}
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 32 }}>
+        <div style={{ display: 'flex', gap: 6, justifyContent: 'center', marginBottom: 32 }}>
           {ENERGY_SCALE.map(e => (
-            <button key={e.value} onClick={() => setSelected(e.value)} style={energyBtn(selected === e.value)}>
+            <button key={e.value} onClick={() => setSelected(e.value)} style={{ ...energyBtn(selected === e.value), width: 62, height: 86, padding: '8px 4px' }}>
               <span>{e.emoji}</span>
-              <span style={{ fontFamily: fonts.sans, fontSize: 9, color: labelColor, marginTop: 3, textAlign: 'center', lineHeight: 1.2 }}>
+              <span style={{ fontFamily: fonts.sans, fontSize: 10, color: labelColor, marginTop: 4, textAlign: 'center', lineHeight: 1.3 }}>
                 {e.label.split(' ').map((w, i) => <span key={i} style={{ display: 'block' }}>{w}</span>)}
               </span>
             </button>
