@@ -47,7 +47,7 @@ export default function Onboarding() {
   }, [])
 
   const [step, setStep]               = useState(0)
-  const [email, setEmail]             = useState(user?.email || '')
+  const [email, setEmail]             = useState('')
   const [name, setName]               = useState(user?.name || '')
   const [energyAreas, setEnergyAreas] = useState([])
   const [frequency, setFrequency]     = useState('')
