@@ -24,6 +24,7 @@ export default function Dashboard() {
   const [loading,  setLoading]  = useState(true)
   const [error,    setError]    = useState('')
   const [activeTab, setActiveTab] = useState('today')
+  const [activeNudgeId, setActiveNudgeId] = useState(null)
 
   // Overlays triggered by push notification params
   const nudgeEventId   = params.get('nudge')   ? parseInt(params.get('nudge'))   : null
@@ -103,9 +104,11 @@ export default function Dashboard() {
   return (
     <div style={{ ...appShell, position: 'relative', background: 'linear-gradient(165deg, #FBF5EC 0%, #F8EDDA 35%, #F5E8D0 70%, #FAF2E0 100%)', color: '#1C2040' }}>
       <Sun />
-      {/* Nudge overlay — triggered when user opens from push */}
+      {/* Nudge overlay — triggered by push notification URL param */}
       {nudgeEventId && <NudgeOverlay eventId={nudgeEventId} onDismiss={() => navigate('/dashboard', { replace: true })} />}
       {checkinEventId && <PostMeetingCheckin eventId={checkinEventId} onDone={() => navigate('/dashboard', { replace: true })} />}
+      {/* Nudge overlay — triggered by tapping the nudge button in the schedule */}
+      {activeNudgeId && <NudgeOverlay eventId={activeNudgeId} onDismiss={() => setActiveNudgeId(null)} />}
 
       <div style={{ ...container, paddingBottom: 100 }}>
 
@@ -183,12 +186,26 @@ export default function Dashboard() {
                   <p style={{ fontFamily: fonts.sans, fontSize: 15, color: '#6B5C4A' }}>No meetings today.</p>
                 ) : (
                   events.map(e => (
-                    <div key={e.id} style={timeline.item(isEventPast(e.end_time))}>
-                      <div style={timeline.dot(isEventNext(e.start_time))} />
-                      <div>
-                        <p style={timeline.time}>{formatTime(e.start_time)} – {formatTime(e.end_time)}</p>
-                        <p style={timeline.name}>{e.title}</p>
+                    <div key={e.id} style={{ ...timeline.item(isEventPast(e.end_time)), justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                        <div style={timeline.dot(isEventNext(e.start_time))} />
+                        <div>
+                          <p style={timeline.time}>{formatTime(e.start_time)} – {formatTime(e.end_time)}</p>
+                          <p style={timeline.name}>{e.title}</p>
+                        </div>
                       </div>
+                      <button
+                        onClick={() => setActiveNudgeId(e.id)}
+                        style={{
+                          fontFamily: fonts.sans, fontSize: 11, fontWeight: 500,
+                          color: colors.brown, background: 'rgba(232,160,32,0.08)',
+                          border: '1px solid rgba(232,160,32,0.28)', borderRadius: 20,
+                          padding: '5px 11px', cursor: 'pointer', flexShrink: 0,
+                          letterSpacing: '0.03em',
+                        }}
+                      >
+                        ✦ nudge
+                      </button>
                     </div>
                   ))
                 )}
